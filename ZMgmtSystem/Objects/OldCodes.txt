@@ -1,0 +1,56 @@
+﻿-----------------------------------
+-----------from Login Form---------
+-----------------------------------
+Private Sub TestToShowDbDialog()
+        If NotConnected() Then
+
+            lblInfo.Text = "...not connected to any database"
+        Else
+            connected = True
+        End If
+    End Sub
+    Private Function NotConnected() As Boolean
+        Dim result As Boolean = True
+        If checkSqlConnection() Then
+            result = False
+        End If
+        Return result
+    End Function
+
+    Public Function checkSqlConnection()
+        Dim connected As Boolean = False
+        Dim server As String = My.Resources.DbServerName
+        Dim username As String = My.Resources.DbUserName
+        Dim userpass As String = My.Resources.DbPassword
+        Dim database As String = My.Resources.DbDatabaseName
+
+        Try
+
+
+            Dim connectionString As String = "Data Source=" & _
+                server & ";Initial Catalog=" & _
+                database & ";Persist Security Info=True;User ID=" & username & ";Password=" & userpass & ""
+            Console.WriteLine("Running Database Test...")
+            Dim conn As New SqlConnection(connectionString)
+            conn.Open()
+            connected = True
+            Console.WriteLine("Connection State: " & conn.State.ToString)
+
+            conn.Close()
+
+        Catch ex As Exception
+            MessageBox.Show("Error connecting to the database..." & vbCrLf & ex.Message)
+
+
+
+        End Try
+
+
+
+
+        Return connected
+    End Function
+
+	-----------------------------------
+-----------from Login Form END---------
+-----------------------------------
