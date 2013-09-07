@@ -26,10 +26,13 @@ Partial Class frmMain
         Me.tsCurrentUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.menuMain = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FullScreenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ManualToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.helpBarSeparator = New System.Windows.Forms.ToolStripSeparator()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.stsMain.SuspendLayout()
         Me.menuMain.SuspendLayout()
         Me.SuspendLayout()
@@ -65,6 +68,12 @@ Partial Class frmMain
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
         '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(92, 22)
+        Me.ExitToolStripMenuItem.Text = "E&xit"
+        '
         'ViewToolStripMenuItem
         '
         Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FullScreenToolStripMenuItem})
@@ -82,15 +91,27 @@ Partial Class frmMain
         '
         'HelpToolStripMenuItem
         '
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManualToolStripMenuItem, Me.helpBarSeparator, Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
-        'ExitToolStripMenuItem
+        'ManualToolStripMenuItem
         '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.ExitToolStripMenuItem.Text = "E&xit"
+        Me.ManualToolStripMenuItem.Name = "ManualToolStripMenuItem"
+        Me.ManualToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ManualToolStripMenuItem.Text = "&Manual"
+        '
+        'helpBarSeparator
+        '
+        Me.helpBarSeparator.Name = "helpBarSeparator"
+        Me.helpBarSeparator.Size = New System.Drawing.Size(149, 6)
+        '
+        'AboutToolStripMenuItem
+        '
+        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Text = "&About"
         '
         'frmMain
         '
@@ -117,5 +138,8 @@ Partial Class frmMain
     Friend WithEvents ViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FullScreenToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ManualToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents helpBarSeparator As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

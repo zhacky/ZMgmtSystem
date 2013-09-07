@@ -1,5 +1,5 @@
 ﻿Imports System.Data.SqlClient
-Imports ZMgmtSystem.UserDataSetTableAdapters
+
 
 Module CurrentConfig
 
@@ -7,11 +7,19 @@ Module CurrentConfig
     Public usernameToFind As String
     Public DisplayName As String
     Public UserLevel As Integer
+    Public ConnectionString As String
 
-
+    '-------ACCESS LEVELS-------------
+    Public StocksAccess As Integer
+    Public ProductionAccess As Integer
+    Public POSAccess As Integer
+    Public LodgingAccess As Integer
+    Public ReportsAccess As Integer
+    Public SupervisorAccess As Integer
+    Public SettingsAccess As Integer
     '-------FUNCTIONS---------
     Function findUserName(ByVal username As String) As Boolean
-
+        SetConnectionString()
         Dim userpass As String
         Dim result As Boolean = False
         '--------------------------
@@ -19,7 +27,7 @@ Module CurrentConfig
 
 
         Console.WriteLine("Finding data from username: " & usernameToFind)
-        Dim sqlConn As New SqlConnection(My.Settings.TestPOSConnectionString & ";Password=" & My.Settings.DbPassword)
+        Dim sqlConn As New SqlConnection(ConnectionString)
         Dim sqlFind As String = "SELECT password FROM users WHERE username =@username"
 
         sqlConn.Open()
@@ -48,7 +56,7 @@ Module CurrentConfig
 
 
         Console.WriteLine("Finding data from username: " & usernameToFind)
-        Dim sqlConn As New SqlConnection(My.Settings.TestPOSConnectionString & ";Password=" & My.Settings.DbPassword)
+        Dim sqlConn As New SqlConnection(ConnectionString)
         Dim sqlFind As String = "SELECT * FROM users WHERE username =@username"
 
         sqlConn.Open()
@@ -61,7 +69,14 @@ Module CurrentConfig
             While reader.Read
                 userpass = reader("password").ToString
                 DisplayName = reader("fname").ToString & " " & reader("mname").ToString & " " & reader("lname").ToString
-                UserLevel = reader("roleid")
+                'StocksAccess = reader("role_stocks")
+                'ProductionAccess = reader("role_production")
+                'POSAccess = reader("role_pos")
+                'LodgingAccess = reader("role_lodging")
+                'ReportsAccess = reader("role_reports")
+                'SupervisorAccess = reader("role_supervisor")
+                'SettingsAccess = reader("role_settings")
+
                 Console.WriteLine("Role ID: " & UserLevel.ToString)
             End While
 
@@ -69,7 +84,74 @@ Module CurrentConfig
             userpass = String.Empty
         End If
 
+        sqlConn.Close()
 
         Return userpass
     End Function
+
+    Private Sub SetConnectionString()
+        ConnectionString = _
+            "Data Source=" & My.Settings.DbServer & _
+            ";Initial Catalog=" & My.Settings.DbDatabase & _
+            ";Persist Security Info=True;User ID=" & My.Settings.DbUserName & _
+            ";Password=" & My.Settings.DbPassword & ";"
+
+    End Sub
+
+    Function GetRoleSettings(ByVal CurrentUserName As String) As Integer()
+        Dim UserRoles As Integer() = {}
+
+        '--------------------------
+
+        Console.WriteLine("Finding data from username: " & CurrentUserName)
+        Dim sqlConn As New SqlConnection(ConnectionString)
+        Dim sqlFind As String = "SELECT username, role_name, role_desc, access_level, role_production, role_stocks, role_pos, role_lodging, role_reports, role_supervisor, role_settings" & _
+                                " FROM users INNER JOIN roles ON users.role_id = roles.role_id WHERE username = @username"
+        Try
+
+            sqlConn.Open()
+
+            Dim findData As New SqlCommand(sqlFind, sqlConn)
+            Console.WriteLine("Username to Find: " & usernameToFind)
+
+            findData.Parameters.Add("@username", SqlDbType.VarChar, 255).Value = usernameToFind
+            Dim reader As SqlDataReader = findData.ExecuteReader()
+            If reader.HasRows Then 'then it does exist
+                Console.WriteLine("Reader has rows")
+                While reader.Read
+
+                    StocksAccess = reader("role_stocks")
+                    Console.WriteLine(StocksAccess.ToString)
+                    ProductionAccess = reader("role_production")
+                    POSAccess = reader("role_pos")
+                    LodgingAccess = reader("role_lodging")
+                    ReportsAccess = reader("role_reports")
+                    SupervisorAccess = reader("role_supervisor")
+                    SettingsAccess = reader("role_settings")
+                    Console.WriteLine("Settings Access: " & SettingsAccess.ToString)
+                    'UserRoles = {StocksAccess, ProductionAccess, POSAccess, ReportsAccess, SupervisorAccess, SettingsAccess, 0}
+                    Array.Resize(UserRoles, 7)
+                    UserRoles.SetValue(StocksAccess, 0)
+                    UserRoles.SetValue(ProductionAccess, 1)
+                    UserRoles.SetValue(POSAccess, 2)
+                    UserRoles.SetValue(LodgingAccess, 3)
+                    UserRoles.SetValue(ReportsAccess, 4)
+                    UserRoles.SetValue(SupervisorAccess, 5)
+                    UserRoles.SetValue(SettingsAccess, 6)
+
+                    Console.WriteLine("Role Settings: " & UserRoles.ToString)
+                End While
+
+
+
+            End If
+
+            sqlConn.Close()
+        Catch ex As Exception
+            Console.WriteLine("Exception at getting role settings: " & ex.Message)
+        End Try
+        Return UserRoles
+    End Function
+
+   
 End Module

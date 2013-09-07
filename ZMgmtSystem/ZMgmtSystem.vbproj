@@ -95,6 +95,12 @@
     <Compile Include="Actions\DatabaseModule.vb" />
     <Compile Include="Actions\InteractivityModule.vb" />
     <Compile Include="Actions\LoginModule.vb" />
+    <Compile Include="Dialogs\AboutBoxDialog.Designer.vb">
+      <DependentUpon>AboutBoxDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AboutBoxDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Dialogs\SettingsDialog.Designer.vb">
       <DependentUpon>SettingsDialog.vb</DependentUpon>
     </Compile>
@@ -117,6 +123,12 @@
       <DependentUpon>StocksForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\StocksForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SupervisorForm.Designer.vb">
+      <DependentUpon>SupervisorForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SupervisorForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLogin.Designer.vb">
@@ -157,13 +169,11 @@
     </Compile>
     <Compile Include="Objects\CurrentConfig.vb" />
     <Compile Include="Settings.vb" />
-    <Compile Include="UserDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserDataSet.xsd</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Dialogs\AboutBoxDialog.resx">
+      <DependentUpon>AboutBoxDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\SettingsDialog.resx">
       <DependentUpon>SettingsDialog.vb</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StocksForm.resx">
       <DependentUpon>StocksForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SupervisorForm.resx">
+      <DependentUpon>SupervisorForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
@@ -205,17 +218,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="UserDataSet.xsc">
-      <DependentUpon>UserDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="UserDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>UserDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="UserDataSet.xss">
-      <DependentUpon>UserDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

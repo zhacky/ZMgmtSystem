@@ -54,11 +54,14 @@ Partial Class SelectionForm
         '
         'btnExit
         '
+        Me.btnExit.Image = Global.ZMgmtSystem.My.Resources.Resources.exitbutton
         Me.btnExit.Location = New System.Drawing.Point(354, 140)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(100, 100)
         Me.btnExit.TabIndex = 8
         Me.btnExit.Text = "Exit"
+        Me.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btnExit.UseVisualStyleBackColor = True
         '
         'btnLodging
@@ -87,11 +90,14 @@ Partial Class SelectionForm
         '
         'btnSupervisor
         '
+        Me.btnSupervisor.Image = Global.ZMgmtSystem.My.Resources.Resources.switchuser
         Me.btnSupervisor.Location = New System.Drawing.Point(142, 140)
         Me.btnSupervisor.Name = "btnSupervisor"
         Me.btnSupervisor.Size = New System.Drawing.Size(100, 100)
         Me.btnSupervisor.TabIndex = 6
         Me.btnSupervisor.Text = "Supervisor"
+        Me.btnSupervisor.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnSupervisor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btnSupervisor.UseVisualStyleBackColor = True
         '
         'btnProduction
@@ -108,11 +114,14 @@ Partial Class SelectionForm
         '
         'btnSettings
         '
+        Me.btnSettings.Image = Global.ZMgmtSystem.My.Resources.Resources.wrench
         Me.btnSettings.Location = New System.Drawing.Point(248, 140)
         Me.btnSettings.Name = "btnSettings"
         Me.btnSettings.Size = New System.Drawing.Size(100, 100)
         Me.btnSettings.TabIndex = 7
         Me.btnSettings.Text = "Settings"
+        Me.btnSettings.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btnSettings.UseVisualStyleBackColor = True
         '
         'btnReports
@@ -129,6 +138,7 @@ Partial Class SelectionForm
         '
         'btnStocks
         '
+        Me.btnStocks.Enabled = False
         Me.btnStocks.Image = Global.ZMgmtSystem.My.Resources.Resources.cart
         Me.btnStocks.Location = New System.Drawing.Point(36, 34)
         Me.btnStocks.Name = "btnStocks"
