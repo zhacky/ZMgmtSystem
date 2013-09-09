@@ -105,10 +105,13 @@ Public Class frmLogin
 
                     If oRow("InstanceName").ToString = "" Then
                         cboServer.Items.Add(oRow("ServerName"))
+                       
                     Else
                         cboServer.Items.Add(oRow("ServerName").ToString & "\" & oRow("InstanceName").ToString)
                     End If
                 Next oRow
+            Else
+                cboServer.Text = My.Settings.DbServer
             End If
         Catch ex As Exception
             'ErrHandler("frmLogin", "cmbServer_DropDown", ex.Source, ex.Message, ex.InnerException)

@@ -1,7 +1,7 @@
 ﻿Public Class SelectionForm
 
     Private Sub SelectionForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        DisableAllButtons()
+        'DisableAllButtons()
         EnableButtonsByRole()
 
         
@@ -35,31 +35,31 @@
     End Sub
 
     Private Sub EnableButtonsByRole()
-        Dim RoleSettings() As Integer
+        Dim RoleSettings() As Boolean
         RoleSettings = CurrentConfig.GetRoleSettings(CurrentConfig.usernameToFind)
         Console.WriteLine("RoleSettings: (6)" & RoleSettings(6).ToString)
-        If RoleSettings(0) = 1 Then
+        If RoleSettings(0) Then
             btnStocks.Enabled = True
         End If
-        If RoleSettings(1) = 1 Then
+        If RoleSettings(1) Then
             btnProduction.Enabled = True
         End If
 
-        If RoleSettings(2) = 1 Then
+        If RoleSettings(2) Then
             btnPOS.Enabled = True
         End If
 
-        If RoleSettings(3) = 1 Then
+        If RoleSettings(3) Then
             btnLodging.Enabled = True
         End If
-        If RoleSettings(4) = 1 Then
+        If RoleSettings(4) Then
             btnReports.Enabled = True
         End If
-        If RoleSettings(5) = 1 Then
+        If RoleSettings(5) Then
             btnSupervisor.Enabled = True
         End If
 
-        If RoleSettings(6) = 1 Then
+        If RoleSettings(6) Then
             btnSettings.Enabled = True
         End If
 

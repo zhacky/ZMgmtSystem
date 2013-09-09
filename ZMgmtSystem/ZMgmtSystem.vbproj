@@ -113,6 +113,12 @@
     <Compile Include="Forms\DatabaseForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\ProductionForm.Designer.vb">
+      <DependentUpon>ProductionForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProductionForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\SelectionForm.Designer.vb">
       <DependentUpon>SelectionForm.vb</DependentUpon>
     </Compile>
@@ -168,6 +174,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Objects\CurrentConfig.vb" />
+    <Compile Include="Objects\Customer.vb" />
+    <Compile Include="Objects\Employee.vb" />
+    <Compile Include="Objects\Product.vb" />
+    <Compile Include="Objects\Stock.vb" />
     <Compile Include="Settings.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DatabaseForm.resx">
       <DependentUpon>DatabaseForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProductionForm.resx">
+      <DependentUpon>ProductionForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectionForm.resx">
       <DependentUpon>SelectionForm.vb</DependentUpon>

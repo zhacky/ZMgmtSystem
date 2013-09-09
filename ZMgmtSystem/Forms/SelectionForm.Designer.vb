@@ -90,7 +90,7 @@ Partial Class SelectionForm
         '
         'btnSupervisor
         '
-        Me.btnSupervisor.Image = Global.ZMgmtSystem.My.Resources.Resources.switchuser
+        Me.btnSupervisor.Image = Global.ZMgmtSystem.My.Resources.Resources.groups
         Me.btnSupervisor.Location = New System.Drawing.Point(142, 140)
         Me.btnSupervisor.Name = "btnSupervisor"
         Me.btnSupervisor.Size = New System.Drawing.Size(100, 100)
@@ -138,7 +138,6 @@ Partial Class SelectionForm
         '
         'btnStocks
         '
-        Me.btnStocks.Enabled = False
         Me.btnStocks.Image = Global.ZMgmtSystem.My.Resources.Resources.cart
         Me.btnStocks.Location = New System.Drawing.Point(36, 34)
         Me.btnStocks.Name = "btnStocks"

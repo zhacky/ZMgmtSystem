@@ -10,14 +10,16 @@ Module CurrentConfig
     Public ConnectionString As String
 
     '-------ACCESS LEVELS-------------
-    Public StocksAccess As Integer
-    Public ProductionAccess As Integer
-    Public POSAccess As Integer
-    Public LodgingAccess As Integer
-    Public ReportsAccess As Integer
-    Public SupervisorAccess As Integer
-    Public SettingsAccess As Integer
+    Public StocksAccess As Boolean
+    Public ProductionAccess As Boolean
+    Public POSAccess As Boolean
+    Public LodgingAccess As Boolean
+    Public ReportsAccess As Boolean
+    Public SupervisorAccess As Boolean
+    Public SettingsAccess As Boolean
     '-------FUNCTIONS---------
+
+
     Function findUserName(ByVal username As String) As Boolean
         SetConnectionString()
         Dim userpass As String
@@ -28,12 +30,12 @@ Module CurrentConfig
 
         Console.WriteLine("Finding data from username: " & usernameToFind)
         Dim sqlConn As New SqlConnection(ConnectionString)
-        Dim sqlFind As String = "SELECT password FROM users WHERE username =@username"
+        Dim sqlFind As String = "SELECT password FROM Users WHERE username=@username"
 
         sqlConn.Open()
 
         Dim findData As New SqlCommand(sqlFind, sqlConn)
-        findData.Parameters.Add("@username", SqlDbType.VarChar, 255).Value = usernameToFind
+        findData.Parameters.Add("@username", SqlDbType.VarChar, 255).Value = username
         Dim reader As SqlDataReader = findData.ExecuteReader()
         If reader.HasRows Then 'then it does exist
             result = True
@@ -57,7 +59,8 @@ Module CurrentConfig
 
         Console.WriteLine("Finding data from username: " & usernameToFind)
         Dim sqlConn As New SqlConnection(ConnectionString)
-        Dim sqlFind As String = "SELECT * FROM users WHERE username =@username"
+        Dim sqlFind As String = "SELECT username, password FROM Users INNER JOIN Employees" & _
+" ON Users.employee_id = Employees.employee_id WHERE username =@username"
 
         sqlConn.Open()
 
@@ -68,14 +71,7 @@ Module CurrentConfig
 
             While reader.Read
                 userpass = reader("password").ToString
-                DisplayName = reader("fname").ToString & " " & reader("mname").ToString & " " & reader("lname").ToString
-                'StocksAccess = reader("role_stocks")
-                'ProductionAccess = reader("role_production")
-                'POSAccess = reader("role_pos")
-                'LodgingAccess = reader("role_lodging")
-                'ReportsAccess = reader("role_reports")
-                'SupervisorAccess = reader("role_supervisor")
-                'SettingsAccess = reader("role_settings")
+                'DisplayName = reader("FirstName").ToString & " " & reader("MiddleName").ToString & " " & reader("LastName").ToString
 
                 Console.WriteLine("Role ID: " & UserLevel.ToString)
             End While
@@ -98,15 +94,15 @@ Module CurrentConfig
 
     End Sub
 
-    Function GetRoleSettings(ByVal CurrentUserName As String) As Integer()
-        Dim UserRoles As Integer() = {}
+    Function GetRoleSettings(ByVal CurrentUserName As String) As Boolean()
+        Dim UserRoles As Boolean() = {}
 
         '--------------------------
 
         Console.WriteLine("Finding data from username: " & CurrentUserName)
         Dim sqlConn As New SqlConnection(ConnectionString)
         Dim sqlFind As String = "SELECT username, role_name, role_desc, access_level, role_production, role_stocks, role_pos, role_lodging, role_reports, role_supervisor, role_settings" & _
-                                " FROM users INNER JOIN roles ON users.role_id = roles.role_id WHERE username = @username"
+                                " FROM Users INNER JOIN Roles ON users.role_id = roles.role_id WHERE username = @username"
         Try
 
             sqlConn.Open()
