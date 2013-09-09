@@ -107,6 +107,12 @@
     <Compile Include="Dialogs\SettingsDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Dialogs\UnitsDialog.Designer.vb">
+      <DependentUpon>UnitsDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\UnitsDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\DatabaseForm.Designer.vb">
       <DependentUpon>DatabaseForm.vb</DependentUpon>
     </Compile>
@@ -176,6 +182,7 @@
     <Compile Include="Objects\CurrentConfig.vb" />
     <Compile Include="Objects\Customer.vb" />
     <Compile Include="Objects\Employee.vb" />
+    <Compile Include="Objects\MUnits.vb" />
     <Compile Include="Objects\Product.vb" />
     <Compile Include="Objects\Stock.vb" />
     <Compile Include="Settings.vb" />
@@ -186,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\SettingsDialog.resx">
       <DependentUpon>SettingsDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\UnitsDialog.resx">
+      <DependentUpon>UnitsDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DatabaseForm.resx">
       <DependentUpon>DatabaseForm.vb</DependentUpon>

@@ -42,6 +42,7 @@ Partial Class StocksForm
         Me.cboCatSearch = New System.Windows.Forms.ComboBox()
         Me.lblSearchCat = New System.Windows.Forms.Label()
         Me.TabPageAdd = New System.Windows.Forms.TabPage()
+        Me.btnSaveStock = New System.Windows.Forms.Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtUnitsInProduction = New System.Windows.Forms.TextBox()
@@ -67,7 +68,7 @@ Partial Class StocksForm
         Me.btnAddStock = New System.Windows.Forms.Button()
         Me.cboSearchAddItem = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.btnSaveStock = New System.Windows.Forms.Button()
+        Me.btnUnitsDialog = New System.Windows.Forms.Button()
         Me.TabControlStocks.SuspendLayout()
         Me.TabPageStocks.SuspendLayout()
         CType(Me.dgvStocks, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -270,6 +271,7 @@ Partial Class StocksForm
         '
         'TabPageAdd
         '
+        Me.TabPageAdd.Controls.Add(Me.btnUnitsDialog)
         Me.TabPageAdd.Controls.Add(Me.btnSaveStock)
         Me.TabPageAdd.Controls.Add(Me.TextBox2)
         Me.TabPageAdd.Controls.Add(Me.Label4)
@@ -293,6 +295,15 @@ Partial Class StocksForm
         Me.TabPageAdd.TabIndex = 2
         Me.TabPageAdd.Text = "Stock In"
         Me.TabPageAdd.UseVisualStyleBackColor = True
+        '
+        'btnSaveStock
+        '
+        Me.btnSaveStock.Location = New System.Drawing.Point(450, 231)
+        Me.btnSaveStock.Name = "btnSaveStock"
+        Me.btnSaveStock.Size = New System.Drawing.Size(75, 23)
+        Me.btnSaveStock.TabIndex = 14
+        Me.btnSaveStock.Text = "Save"
+        Me.btnSaveStock.UseVisualStyleBackColor = True
         '
         'TextBox2
         '
@@ -356,7 +367,7 @@ Partial Class StocksForm
         Me.cboUnitMeasure.FormattingEnabled = True
         Me.cboUnitMeasure.Location = New System.Drawing.Point(280, 160)
         Me.cboUnitMeasure.Name = "cboUnitMeasure"
-        Me.cboUnitMeasure.Size = New System.Drawing.Size(121, 21)
+        Me.cboUnitMeasure.Size = New System.Drawing.Size(80, 21)
         Me.cboUnitMeasure.TabIndex = 8
         '
         'lblItemName
@@ -500,14 +511,14 @@ Partial Class StocksForm
         Me.Label6.TabIndex = 1
         Me.Label6.Text = "Search"
         '
-        'btnSaveStock
+        'btnUnitsDialog
         '
-        Me.btnSaveStock.Location = New System.Drawing.Point(450, 231)
-        Me.btnSaveStock.Name = "btnSaveStock"
-        Me.btnSaveStock.Size = New System.Drawing.Size(75, 23)
-        Me.btnSaveStock.TabIndex = 14
-        Me.btnSaveStock.Text = "Save"
-        Me.btnSaveStock.UseVisualStyleBackColor = True
+        Me.btnUnitsDialog.Location = New System.Drawing.Point(366, 158)
+        Me.btnUnitsDialog.Name = "btnUnitsDialog"
+        Me.btnUnitsDialog.Size = New System.Drawing.Size(27, 23)
+        Me.btnUnitsDialog.TabIndex = 15
+        Me.btnUnitsDialog.Text = "..."
+        Me.btnUnitsDialog.UseVisualStyleBackColor = True
         '
         'StocksForm
         '
@@ -580,5 +591,6 @@ Partial Class StocksForm
     Friend WithEvents cboSearchAddItem As System.Windows.Forms.ComboBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents btnSaveStock As System.Windows.Forms.Button
+    Friend WithEvents btnUnitsDialog As System.Windows.Forms.Button
    
 End Class

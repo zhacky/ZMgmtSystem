@@ -23,9 +23,17 @@ Partial Class ProductionForm
         Me.TabPageProducts = New System.Windows.Forms.TabPage()
         Me.dgvProducts = New System.Windows.Forms.DataGridView()
         Me.TabPageProductDetails = New System.Windows.Forms.TabPage()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.btnUnitsDialog = New System.Windows.Forms.Button()
+        Me.cboUnitOfMeasure = New System.Windows.Forms.ComboBox()
+        Me.txtUnitPrice = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnAddNewProduct = New System.Windows.Forms.Button()
+        Me.cboSearchProducts = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtQuantity = New System.Windows.Forms.TextBox()
+        Me.txtProductName = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblQuantity = New System.Windows.Forms.Label()
         Me.lblProductName = New System.Windows.Forms.Label()
         Me.TabControlProduction.SuspendLayout()
         Me.TabPageProducts.SuspendLayout()
@@ -67,45 +75,121 @@ Partial Class ProductionForm
         '
         'TabPageProductDetails
         '
-        Me.TabPageProductDetails.Controls.Add(Me.TextBox2)
-        Me.TabPageProductDetails.Controls.Add(Me.TextBox1)
+        Me.TabPageProductDetails.Controls.Add(Me.btnUnitsDialog)
+        Me.TabPageProductDetails.Controls.Add(Me.cboUnitOfMeasure)
+        Me.TabPageProductDetails.Controls.Add(Me.txtUnitPrice)
         Me.TabPageProductDetails.Controls.Add(Me.Label1)
+        Me.TabPageProductDetails.Controls.Add(Me.btnAddNewProduct)
+        Me.TabPageProductDetails.Controls.Add(Me.cboSearchProducts)
+        Me.TabPageProductDetails.Controls.Add(Me.Label2)
+        Me.TabPageProductDetails.Controls.Add(Me.txtQuantity)
+        Me.TabPageProductDetails.Controls.Add(Me.txtProductName)
+        Me.TabPageProductDetails.Controls.Add(Me.Label3)
+        Me.TabPageProductDetails.Controls.Add(Me.lblQuantity)
         Me.TabPageProductDetails.Controls.Add(Me.lblProductName)
         Me.TabPageProductDetails.Location = New System.Drawing.Point(4, 22)
         Me.TabPageProductDetails.Name = "TabPageProductDetails"
         Me.TabPageProductDetails.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPageProductDetails.Size = New System.Drawing.Size(548, 305)
         Me.TabPageProductDetails.TabIndex = 1
-        Me.TabPageProductDetails.Text = "Add Product"
+        Me.TabPageProductDetails.Text = "Product Details"
         Me.TabPageProductDetails.UseVisualStyleBackColor = True
         '
-        'TextBox2
+        'btnUnitsDialog
         '
-        Me.TextBox2.Location = New System.Drawing.Point(9, 86)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(257, 20)
-        Me.TextBox2.TabIndex = 1
+        Me.btnUnitsDialog.Location = New System.Drawing.Point(127, 125)
+        Me.btnUnitsDialog.Name = "btnUnitsDialog"
+        Me.btnUnitsDialog.Size = New System.Drawing.Size(32, 23)
+        Me.btnUnitsDialog.TabIndex = 8
+        Me.btnUnitsDialog.Text = "..."
+        Me.btnUnitsDialog.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'cboUnitOfMeasure
         '
-        Me.TextBox1.Location = New System.Drawing.Point(9, 47)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(257, 20)
-        Me.TextBox1.TabIndex = 1
+        Me.cboUnitOfMeasure.FormattingEnabled = True
+        Me.cboUnitOfMeasure.Location = New System.Drawing.Point(58, 127)
+        Me.cboUnitOfMeasure.Name = "cboUnitOfMeasure"
+        Me.cboUnitOfMeasure.Size = New System.Drawing.Size(63, 21)
+        Me.cboUnitOfMeasure.TabIndex = 7
+        '
+        'txtUnitPrice
+        '
+        Me.txtUnitPrice.Location = New System.Drawing.Point(165, 127)
+        Me.txtUnitPrice.Name = "txtUnitPrice"
+        Me.txtUnitPrice.Size = New System.Drawing.Size(100, 20)
+        Me.txtUnitPrice.TabIndex = 6
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 70)
+        Me.Label1.Location = New System.Drawing.Point(162, 111)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(75, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Product Name"
+        Me.Label1.Size = New System.Drawing.Size(53, 13)
+        Me.Label1.TabIndex = 5
+        Me.Label1.Text = "Unit Price"
+        '
+        'btnAddNewProduct
+        '
+        Me.btnAddNewProduct.Location = New System.Drawing.Point(285, 36)
+        Me.btnAddNewProduct.Name = "btnAddNewProduct"
+        Me.btnAddNewProduct.Size = New System.Drawing.Size(75, 23)
+        Me.btnAddNewProduct.TabIndex = 4
+        Me.btnAddNewProduct.Text = "Add New"
+        Me.btnAddNewProduct.UseVisualStyleBackColor = True
+        '
+        'cboSearchProducts
+        '
+        Me.cboSearchProducts.FormattingEnabled = True
+        Me.cboSearchProducts.Location = New System.Drawing.Point(9, 38)
+        Me.cboSearchProducts.Name = "cboSearchProducts"
+        Me.cboSearchProducts.Size = New System.Drawing.Size(270, 21)
+        Me.cboSearchProducts.TabIndex = 3
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(6, 22)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(41, 13)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "Search"
+        '
+        'txtQuantity
+        '
+        Me.txtQuantity.Location = New System.Drawing.Point(9, 127)
+        Me.txtQuantity.Name = "txtQuantity"
+        Me.txtQuantity.Size = New System.Drawing.Size(43, 20)
+        Me.txtQuantity.TabIndex = 1
+        '
+        'txtProductName
+        '
+        Me.txtProductName.Location = New System.Drawing.Point(9, 88)
+        Me.txtProductName.Name = "txtProductName"
+        Me.txtProductName.Size = New System.Drawing.Size(257, 20)
+        Me.txtProductName.TabIndex = 1
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(58, 111)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(26, 13)
+        Me.Label3.TabIndex = 0
+        Me.Label3.Text = "Unit"
+        '
+        'lblQuantity
+        '
+        Me.lblQuantity.AutoSize = True
+        Me.lblQuantity.Location = New System.Drawing.Point(6, 111)
+        Me.lblQuantity.Name = "lblQuantity"
+        Me.lblQuantity.Size = New System.Drawing.Size(46, 13)
+        Me.lblQuantity.TabIndex = 0
+        Me.lblQuantity.Text = "Quantity"
         '
         'lblProductName
         '
         Me.lblProductName.AutoSize = True
-        Me.lblProductName.Location = New System.Drawing.Point(6, 31)
+        Me.lblProductName.Location = New System.Drawing.Point(6, 72)
         Me.lblProductName.Name = "lblProductName"
         Me.lblProductName.Size = New System.Drawing.Size(75, 13)
         Me.lblProductName.TabIndex = 0
@@ -131,9 +215,17 @@ Partial Class ProductionForm
     Friend WithEvents TabPageProducts As System.Windows.Forms.TabPage
     Friend WithEvents TabPageProductDetails As System.Windows.Forms.TabPage
     Friend WithEvents dgvProducts As System.Windows.Forms.DataGridView
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents txtQuantity As System.Windows.Forms.TextBox
+    Friend WithEvents txtProductName As System.Windows.Forms.TextBox
+    Friend WithEvents lblQuantity As System.Windows.Forms.Label
     Friend WithEvents lblProductName As System.Windows.Forms.Label
+    Friend WithEvents btnAddNewProduct As System.Windows.Forms.Button
+    Friend WithEvents cboSearchProducts As System.Windows.Forms.ComboBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents cboUnitOfMeasure As System.Windows.Forms.ComboBox
+    Friend WithEvents txtUnitPrice As System.Windows.Forms.TextBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents btnUnitsDialog As System.Windows.Forms.Button
 
 End Class

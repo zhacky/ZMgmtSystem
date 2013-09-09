@@ -70,4 +70,8 @@
     Private Sub btnSupervisor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSupervisor.Click
         SupervisorForm.Show()
     End Sub
+
+    Private Sub btnProduction_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProduction.Click
+        ProductionForm.Show()
+    End Sub
 End Class
