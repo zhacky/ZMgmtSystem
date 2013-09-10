@@ -142,7 +142,7 @@ Partial Class ProductionForm
         Me.cboSearchProducts.FormattingEnabled = True
         Me.cboSearchProducts.Location = New System.Drawing.Point(9, 38)
         Me.cboSearchProducts.Name = "cboSearchProducts"
-        Me.cboSearchProducts.Size = New System.Drawing.Size(270, 21)
+        Me.cboSearchProducts.Size = New System.Drawing.Size(256, 21)
         Me.cboSearchProducts.TabIndex = 3
         '
         'Label2

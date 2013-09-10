@@ -18,8 +18,7 @@ Public Class UnitsDialog
     End Sub
 
     Private Sub listUnits()
-        cboUnitSelect.Items.AddRange((New MUnits).units.ToArray)
-        cboUnitGroup.Items.AddRange((New MUnits).units.ToArray)
+        cboUnitSelect.Items.AddRange((New UnitOfMeasure).units.ToArray)
     End Sub
 
     Private Sub btnAddUnit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAddUnit.Click
@@ -37,37 +36,36 @@ Public Class UnitsDialog
 
     Private Sub EmptyBoxes(ByVal p1 As Boolean)
         If p1 Then
-            'cboUnitSelect.Items.Clear()
             txtUnitName.Clear()
-            txtQuantity.Clear()
+            txtUnitDescription.Clear()
         End If
     End Sub
 
     Private Sub btnSaveUnit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSaveUnit.Click
+
         If txtUnitName.Text <> String.Empty Then
-            SaveUnitDetails()
+            If Not cboUnitSelect.Enabled Then
+                Dim units As New UnitOfMeasure(txtUnitName.Text)
+
+                units.Save(txtUnitName.Text, txtUnitDescription.Text)
+                units.Dispose()
+            Else
+                Dim units As New UnitOfMeasure(txtUnitName.Text)
+
+                units.Update(cboUnitSelect.SelectedIndex + 1, txtUnitName.Text, txtUnitDescription.Text)
+                units.Dispose()
+            End If
             EmptyBoxes(True)
             cboUnitSelect.Enabled = True
         Else
             MessageBox.Show("Unit name cannot be empty...")
         End If
+        
+
 
     End Sub
 
-    Private Sub SaveUnitDetails()
-        Dim units As New MUnits
 
-        If cboUnitGroup.SelectedText = String.Empty Then
-            units.Save(txtUnitName.Text, "NULL", 0)
-        Else
-            If Integer.TryParse(txtQuantity.Text, New Integer) Then
-                units.Save(txtUnitName.Text, cboUnitGroup.SelectedItem.ToString, Integer.Parse(txtQuantity.Text))
-            Else
-                units.Save(txtUnitName.Text, cboUnitGroup.SelectedItem.ToString, 0)
-            End If
-        End If
-
-    End Sub
 
     Private Sub EnableSaveAndDelete(ByVal p1 As Boolean)
         btnSaveUnit.Enabled = p1
@@ -75,7 +73,7 @@ Public Class UnitsDialog
     End Sub
 
     Private Sub cboUnitSelect_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboUnitSelect.SelectedIndexChanged
-        If cboUnitSelect.SelectedIndex <> -1 Then
+        If cboUnitSelect.Text = String.Empty Then
             EnableSaveAndDelete(True)
             PopulateFields()
         Else
@@ -84,9 +82,11 @@ Public Class UnitsDialog
     End Sub
 
     Private Sub PopulateFields()
-        Dim unitname As String = cboUnitSelect.SelectedText
-        Dim unit As New MUnits(unitname)
-
+        Dim unitname As String = cboUnitSelect.SelectedItem.ToString
+        Dim unit As New UnitOfMeasure(unitname)
+        txtUnitName.Text = unit.unit_name.ToString
+        txtUnitDescription.Text = unit.unit_description.ToString
+      
     End Sub
 
 End Class

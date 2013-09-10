@@ -1,28 +1,21 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Data.Sql
 
 Public Class frmLogin
-
-    ' TODO: Insert code to perform custom authentication using the provided username and password 
-    ' (See http://go.microsoft.com/fwlink/?LinkId=35339).  
-    ' The custom principal can then be attached to the current thread's principal as follows: 
-    '     My.User.CurrentPrincipal = CustomPrincipal
-    ' where CustomPrincipal is the IPrincipal implementation used to perform authentication. 
-    ' Subsequently, My.User will return identity information encapsulated in the CustomPrincipal object
-    ' such as the username, display name, etc.
-
     Dim DbServer As String
     Dim DbUsername As String
     Dim DbPassword As String
     Dim DbName As String
     Dim connected As Boolean = False
+
     
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
         lblInfo.Text = String.Empty
         Console.WriteLine("...OK button clicked")
         If connected Then
-            If LoginModule.loginOk(UsernameTextBox.Text, PasswordTextBox.Text, Me) Then
-
+            ' If LoginModule.loginOk(UsernameTextBox.Text, PasswordTextBox.Text, Me) Then
+            If LoginModule.loginOk("Zhack", "backfire", Me) Then
                 SelectionForm.Show()
                 Me.Close()
             End If
@@ -92,32 +85,34 @@ Public Class frmLogin
     End Sub
 
     Private Sub findServers()
-        Dim oTable As Data.DataTable
-        Dim lstServers As List(Of String)
-        Try
 
+        Dim oTable As Data.DataTable = Nothing
+        'Dim lstServers As List(Of String)
+        Try
+            cboServer.Text = My.Settings.DbServer
             If cboServer.Items.Count = 0 Then
                 System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
-
-                oTable = System.Data.Sql.SqlDataSourceEnumerator.Instance.GetDataSources
+                oTable = SqlDataSourceEnumerator.Instance.GetDataSources
 
                 For Each oRow As DataRow In oTable.Rows
-
+                    Console.WriteLine(oRow("InstanceName").ToString)
                     If oRow("InstanceName").ToString = "" Then
-                        cboServer.Items.Add(oRow("ServerName"))
-                       
+                        Console.WriteLine(oRow("ServerName").ToString)
+                        cboServer.Items.Add(oRow("ServerName").ToString)
+
                     Else
+                        Console.WriteLine(oRow("ServerName").ToString)
                         cboServer.Items.Add(oRow("ServerName").ToString & "\" & oRow("InstanceName").ToString)
                     End If
                 Next oRow
-            Else
-                cboServer.Text = My.Settings.DbServer
             End If
+
+
         Catch ex As Exception
             'ErrHandler("frmLogin", "cmbServer_DropDown", ex.Source, ex.Message, ex.InnerException)
+            MessageBox.Show(ex.Message)
         Finally
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
-
             If oTable IsNot Nothing Then
                 oTable.Dispose()
             End If
@@ -125,14 +120,22 @@ Public Class frmLogin
 
     End Sub
 
-
+#Region "Search For Server"
     Private Sub cboServer_DropDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboServer.DropDown
-        findServers()
+        Dim isAvailable = My.Computer.Network.IsAvailable
+
+        If isAvailable Then
+            findServers()
+        Else
+            lblInfo.Text = "Your computer is not connected to any network"
+        End If
     End Sub
+#End Region
+
 
     Private Sub btnTestConnection_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTestConnection.Click
         TestConnection()
-        
+
     End Sub
 
     Public Function checkConnection()

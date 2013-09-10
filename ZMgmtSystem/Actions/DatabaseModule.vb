@@ -33,7 +33,7 @@ Module DatabaseModule
 
     Function GetRoleDescByName(ByVal rolename As String, ByVal ROLE_DESC As Integer) As String
         Dim role_description As Integer = ROLE_DESC
-        Dim roledesc As String
+        Dim roledesc As String = ""
         Return roledesc
     End Function
     Function GetRoleItemByName(ByVal rolename As String, ByVal ACCESS As Integer) As Integer

@@ -2,7 +2,7 @@
 
     
     Private Sub ProductionForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Dim units As New MUnits
+        Dim units As New UnitOfMeasure
         cboUnitOfMeasure.Items.AddRange(units.units.ToArray)
     End Sub
 

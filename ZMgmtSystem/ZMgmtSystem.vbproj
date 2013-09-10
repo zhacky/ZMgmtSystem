@@ -182,10 +182,12 @@
     <Compile Include="Objects\CurrentConfig.vb" />
     <Compile Include="Objects\Customer.vb" />
     <Compile Include="Objects\Employee.vb" />
-    <Compile Include="Objects\MUnits.vb" />
+    <Compile Include="Objects\Param.vb" />
     <Compile Include="Objects\Product.vb" />
     <Compile Include="Objects\Stock.vb" />
+    <Compile Include="Objects\UnitOfMeasure.vb" />
     <Compile Include="Settings.vb" />
+    <Compile Include="TestFriends.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dialogs\AboutBoxDialog.resx">

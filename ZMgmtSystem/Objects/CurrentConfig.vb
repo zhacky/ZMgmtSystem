@@ -31,27 +31,34 @@ Module CurrentConfig
         Console.WriteLine("Finding data from username: " & usernameToFind)
         Dim sqlConn As New SqlConnection(ConnectionString)
         Dim sqlFind As String = "SELECT password FROM Users WHERE username=@username"
+        Try
+            Dim findData As New SqlCommand(sqlFind, sqlConn)
+            findData.Parameters.Add("@username", SqlDbType.VarChar, 255).Value = username
+            sqlConn.Open()
+            Dim reader As SqlDataReader = findData.ExecuteReader()
+            If reader.HasRows Then 'then it does exist
+                result = True
+                While reader.Read
+                    userpass = reader("password").ToString
+                End While
+            Else
 
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            sqlConn.Close()
+        End Try
         sqlConn.Open()
 
-        Dim findData As New SqlCommand(sqlFind, sqlConn)
-        findData.Parameters.Add("@username", SqlDbType.VarChar, 255).Value = username
-        Dim reader As SqlDataReader = findData.ExecuteReader()
-        If reader.HasRows Then 'then it does exist
-            result = True
-            While reader.Read
-                userpass = reader("password").ToString
-            End While
-        Else
-
-        End If
+       
 
 
         Return result
     End Function
     Function checkUserName(ByVal username As String) As String
         Dim usernameToFind As String
-        Dim userpass As String
+        Dim userpass As String = ""
 
         '--------------------------
         usernameToFind = username

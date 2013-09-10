@@ -31,11 +31,9 @@ Partial Class UnitsDialog
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnAddUnit = New System.Windows.Forms.Button()
         Me.btnSaveUnit = New System.Windows.Forms.Button()
-        Me.cboUnitGroup = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblQtyInGroup = New System.Windows.Forms.Label()
-        Me.txtQuantity = New System.Windows.Forms.TextBox()
         Me.btnDelete = New System.Windows.Forms.Button()
+        Me.txtUnitDescription = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -125,38 +123,14 @@ Partial Class UnitsDialog
         Me.btnSaveUnit.Text = "Save Unit"
         Me.btnSaveUnit.UseVisualStyleBackColor = True
         '
-        'cboUnitGroup
-        '
-        Me.cboUnitGroup.FormattingEnabled = True
-        Me.cboUnitGroup.Location = New System.Drawing.Point(25, 122)
-        Me.cboUnitGroup.Name = "cboUnitGroup"
-        Me.cboUnitGroup.Size = New System.Drawing.Size(121, 21)
-        Me.cboUnitGroup.TabIndex = 7
-        '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(22, 106)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(58, 13)
+        Me.Label3.Size = New System.Drawing.Size(82, 13)
         Me.Label3.TabIndex = 8
-        Me.Label3.Text = "Unit Group"
-        '
-        'lblQtyInGroup
-        '
-        Me.lblQtyInGroup.AutoSize = True
-        Me.lblQtyInGroup.Location = New System.Drawing.Point(154, 106)
-        Me.lblQtyInGroup.Name = "lblQtyInGroup"
-        Me.lblQtyInGroup.Size = New System.Drawing.Size(90, 13)
-        Me.lblQtyInGroup.TabIndex = 9
-        Me.lblQtyInGroup.Text = "Quantity In Group"
-        '
-        'txtQuantity
-        '
-        Me.txtQuantity.Location = New System.Drawing.Point(152, 122)
-        Me.txtQuantity.Name = "txtQuantity"
-        Me.txtQuantity.Size = New System.Drawing.Size(57, 20)
-        Me.txtQuantity.TabIndex = 10
+        Me.Label3.Text = "Unit Description"
         '
         'btnDelete
         '
@@ -168,6 +142,14 @@ Partial Class UnitsDialog
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.UseVisualStyleBackColor = True
         '
+        'txtUnitDescription
+        '
+        Me.txtUnitDescription.Location = New System.Drawing.Point(25, 122)
+        Me.txtUnitDescription.Multiline = True
+        Me.txtUnitDescription.Name = "txtUnitDescription"
+        Me.txtUnitDescription.Size = New System.Drawing.Size(184, 58)
+        Me.txtUnitDescription.TabIndex = 12
+        '
         'UnitsDialog
         '
         Me.AcceptButton = Me.OK_Button
@@ -175,11 +157,9 @@ Partial Class UnitsDialog
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(435, 315)
+        Me.Controls.Add(Me.txtUnitDescription)
         Me.Controls.Add(Me.btnDelete)
-        Me.Controls.Add(Me.txtQuantity)
-        Me.Controls.Add(Me.lblQtyInGroup)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.cboUnitGroup)
         Me.Controls.Add(Me.btnSaveUnit)
         Me.Controls.Add(Me.btnAddUnit)
         Me.Controls.Add(Me.Label2)
@@ -208,10 +188,8 @@ Partial Class UnitsDialog
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents btnAddUnit As System.Windows.Forms.Button
     Friend WithEvents btnSaveUnit As System.Windows.Forms.Button
-    Friend WithEvents cboUnitGroup As System.Windows.Forms.ComboBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents lblQtyInGroup As System.Windows.Forms.Label
-    Friend WithEvents txtQuantity As System.Windows.Forms.TextBox
     Friend WithEvents btnDelete As System.Windows.Forms.Button
+    Friend WithEvents txtUnitDescription As System.Windows.Forms.TextBox
 
 End Class

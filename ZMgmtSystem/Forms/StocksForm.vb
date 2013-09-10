@@ -3,7 +3,7 @@
     
 
     Private Sub StocksForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Dim munits As New MUnits
+        Dim munits As New UnitOfMeasure
         cboUnitMeasure.Items.AddRange(munits.units.ToArray)
 
     End Sub
